@@ -9,7 +9,7 @@ const selectors = {
     secondsValue: document.querySelector("[data-seconds]"),
 }
 selectors.startBtn.disabled = true
-let endTime
+let endTime = null
 const options = {
     enableTime: true,
     time_24hr: true,

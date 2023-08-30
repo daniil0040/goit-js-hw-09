@@ -3,7 +3,7 @@ const selectors = {
     stopBtn: document.querySelector("[data-stop]"),
     bg: document.querySelector("body")
 }
-let intervalId
+let intervalId = null
 selectors.startBtn.addEventListener("click",handlerStart)
 selectors.stopBtn.addEventListener("click",handlerStop)
 
