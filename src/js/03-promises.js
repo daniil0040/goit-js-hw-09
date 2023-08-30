@@ -1,22 +1,22 @@
-const selectors = {
-  form: document.querySelector(".form"),
-  // delayInput: document.querySelector(`[name = "delay"]`),
-  // delayStepInput: document.querySelector(`[name = "step"]`),
-  // amountInput: document.querySelector(`[name = "amount"]`),
-  submitBtn : document.querySelector("button")
-}
+// const selectors = {
+//   form: document.querySelector(".form"),
+//   // delayInput: document.querySelector(`[name = "delay"]`),
+//   // delayStepInput: document.querySelector(`[name = "step"]`),
+//   // amountInput: document.querySelector(`[name = "amount"]`),
+//   submitBtn : document.querySelector("button")
+// }
 
-selectors.form.addEventListener("input",hendlerInput)
-function hendlerInput(evt) {
-  console.log(evt.target.getAttribute("name"), evt.target.value);
-  const obj = {}
-  if (!obj.hasOwnProperty(evt.target.getAttribute("name"))) {
-    obj.evt.target.getAttribute("name") = evt.target.value
-  } else {
+// selectors.form.addEventListener("input",hendlerInput)
+// function hendlerInput(evt) {
+//   console.log(evt.target.getAttribute("name"), evt.target.value);
+//   const obj = {}
+//   if (!obj.hasOwnProperty(evt.target.getAttribute("name"))) {
+//     obj.evt.target.getAttribute("name") = evt.target.value
+//   } else {
     
-  }
-  return obj
-}
+//   }
+//   return obj
+// }
 
 // function createPromise(position, delay) {
 //   const shouldResolve = Math.random() > 0.3;

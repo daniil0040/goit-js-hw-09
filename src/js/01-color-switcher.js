@@ -8,7 +8,7 @@ selectors.startBtn.addEventListener("click",handlerStart)
 selectors.stopBtn.addEventListener("click",handlerStop)
 
 function handlerStart() {
-     intervalId = setInterval(() => {
+    intervalId = setInterval(() => {
         selectors.bg.style.backgroundColor = `${getRandomHexColor()}`
     }, 1000);
     selectors.startBtn.disabled = true
