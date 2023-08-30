@@ -1,35 +1,48 @@
-// const selectors = {
-//   form: document.querySelector(".form"),
-//   // delayInput: document.querySelector(`[name = "delay"]`),
-//   // delayStepInput: document.querySelector(`[name = "step"]`),
-//   // amountInput: document.querySelector(`[name = "amount"]`),
-//   submitBtn : document.querySelector("button")
-// }
+import Notiflix from 'notiflix';
+const selectors = {
+  form: document.querySelector(".form"),
+  submitBtn : document.querySelector("button")
+}
+const values = {}
 
-// selectors.form.addEventListener("input",hendlerInput)
-// function hendlerInput(evt) {
-//   console.log(evt.target.getAttribute("name"), evt.target.value);
-//   const obj = {}
-//   if (!obj.hasOwnProperty(evt.target.getAttribute("name"))) {
-//     obj.evt.target.getAttribute("name") = evt.target.value
-//   } else {
-    
-//   }
-//   return obj
-// }
+selectors.form.addEventListener("input", hendlerInput)
+selectors.submitBtn.addEventListener("click", handlerSubmit)
 
-// function createPromise(position, delay) {
-//   const shouldResolve = Math.random() > 0.3;
-//   if (shouldResolve) {
-//     // Fulfill
-//   } else {
-//     // Reject
-//   }
-// }
-// createPromise(2, 1500)
-//   .then(({ position, delay }) => {
-//     console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
-//   })
-//   .catch(({ position, delay }) => {
-//     console.log(`❌ Rejected promise ${position} in ${delay}ms`);
-//   });
+function handlerSubmit(evt) {
+  evt.preventDefault()
+  let delay = Number(values.delay);
+let step = Number(values.step);
+  let amount = Number(values.amount)
+  for (let position = 1; position < amount + 1; position += 1) {
+    if (position>=2) {
+      delay+= step
+    }
+  createPromise(position, delay)
+}
+}
+
+function hendlerInput(evt) {
+  const objKey = evt.target.getAttribute("name")
+  values[`${objKey}`] = evt.target.value
+}
+
+function createPromise(position, delay) {
+  const shouldResolve = Math.random() > 0.3;
+  console.log(position, delay);
+  const promise = new Promise((resolve, reject) => {
+    setTimeout(() => {
+          if (shouldResolve) {
+      resolve({position, delay})
+    } else {
+      reject({position, delay})
+    }
+    },delay)
+  })
+  promise
+    .then(({ position, delay }) => {
+      Notiflix.Notify.success(`Fulfilled promise ${position} in ${delay}ms`);
+    })
+    .catch(({ position, delay }) => {
+      Notiflix.Notify.failure(`Rejected promise ${position} in ${delay}ms`);
+    });
+}
