@@ -3,15 +3,17 @@ const selectors = {
     stopBtn: document.querySelector("[data-stop]"),
     bg: document.querySelector("body")
 }
+let intervalId
 selectors.startBtn.addEventListener("click",handlerStart)
 selectors.stopBtn.addEventListener("click",handlerStop)
 
 function handlerStart() {
-    intervalId = setInterval(() => {
+     intervalId = setInterval(() => {
         selectors.bg.style.backgroundColor = `${getRandomHexColor()}`
     }, 1000);
     selectors.startBtn.disabled = true
 }
+
 function handlerStop() {
     clearInterval(intervalId)
     selectors.startBtn.disabled = false
